@@ -12,6 +12,6 @@ public class TestController {
     @PostMapping("/nome")
     public String getName(@RequestBody JsonNode request){
         System.out.println(request);
-        return "Olá Rodrigo Neri";
+        return "Neri";
     }
 }
