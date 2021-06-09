@@ -1,5 +1,6 @@
 package neri.rodrigo.botmsd.controller;
 import com.fasterxml.jackson.databind.JsonNode;
+import neri.rodrigo.botmsd.model.Message;
 import neri.rodrigo.botmsd.model.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class TestController {
 
     @PostMapping("/nome")
-    public String getName(@RequestBody JsonNode request){
+    public Message getName(@RequestBody JsonNode request){
         System.out.println(request);
-        return "Neri";
+    return new Message("Rodrigo Neri");
     }
 }
