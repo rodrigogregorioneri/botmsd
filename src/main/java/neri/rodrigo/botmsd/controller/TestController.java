@@ -83,13 +83,14 @@ public class TestController {
 
         String marca = "CALMINEX";
 
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-        Page<Estoque> estoque =   estoqueRepository.buscaMarca(marca,firstPageWithTwoElements);
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        List<IResponse> estoque = estoqueRepository.buscaMarca2(firstPageWithTwoElements);
         Text text = new Text();
         List<String> textR = new ArrayList<>();
-        for(Estoque e :   estoque){
-       System.out.println(e.getMarca());
-            textR.add(e.getMarca());
+        for(IResponse e :   estoque){
+            ResponseTest responseTest = new ResponseTest();
+            responseTest.iResponseToResponseTest(e);
+            textR.add(responseTest.toString());
             text.setText(textR);
         }
         fulfillmentMessage.setText(text);
