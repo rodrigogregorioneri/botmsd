@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+//import javax.persistence.EntityManager;
+//import javax.persistence.PersistenceContext;
+//import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,8 +21,8 @@ import java.util.List;
 @RequestMapping("/v1/campeonato")
 public class TestController {
 
-    @Autowired
-    EstoqueRepository estoqueRepository;
+//    @Autowired
+//    EstoqueRepository estoqueRepository;
 
 
 
@@ -33,10 +33,10 @@ public class TestController {
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
 
-
-        estoqueRepository.findAll().forEach(e ->{
-
-        });
+//
+//        estoqueRepository.findAll().forEach(e ->{
+//
+//        });
 
         Text text = new Text();
         List<String> textR = new ArrayList<>();

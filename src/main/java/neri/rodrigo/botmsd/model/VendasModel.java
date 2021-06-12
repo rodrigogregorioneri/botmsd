@@ -1,9 +1,9 @@
 package neri.rodrigo.botmsd.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
 
 //@Entity
 //@Table(name = "TB_Vendas")

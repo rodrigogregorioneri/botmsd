@@ -1,26 +1,26 @@
 package neri.rodrigo.botmsd.model;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.List;
-
-@Entity
-@Table(name = "TB_Estoque")
+//
+//@Entity
+//@Table(name = "TB_Estoque")
 public class EstoqueModel {
-
-    @Id
-    @Column(name = "CODPRODUTO")
+//
+//    @Id
+//    @Column(name = "CODPRODUTO")
     private String cod_produto;
-
-    @Column(name = "MARCA")
+//
+//    @Column(name = "MARCA")
     private String marca;
-
-    @Column(name = "NOMECENTRODISTRIBUICAO")
+//
+//    @Column(name = "NOMECENTRODISTRIBUICAO")
     private String nome_centro_distribuicao;
-
-    @Column(name = "TOTALESTOQUE")
+//
+//    @Column(name = "TOTALESTOQUE")
     private String total_estoque;
 
-    @Column(name = "VALORTOTAL")
+//    @Column(name = "VALORTOTAL")
     private String valor_total;
 
     public String getCod_produto() {
