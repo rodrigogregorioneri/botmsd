@@ -35,16 +35,18 @@ public class TestController {
 
 
         estoqueRepository.findAll().forEach(e ->{
-            Text text = new Text();
-            List<String> textR = new ArrayList<>();
-            System.out.println(e.getMarca());
-            textR.add(e.getMarca());
-            text.setText(textR);
-            fulfillmentMessage.setText(text);
-            fulfillmentMessageList.add(fulfillmentMessage);
-            response.setFulfillmentMessages(fulfillmentMessageList);
+
         });
 
+
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+//        System.out.println(e.getMarca());
+        textR.add("teste");
+        text.setText(textR);
+        fulfillmentMessage.setText(text);
+        fulfillmentMessageList.add(fulfillmentMessage);
+        response.setFulfillmentMessages(fulfillmentMessageList);
 
 
 
