@@ -38,11 +38,10 @@ public class TestController {
 
         });
 
-
         Text text = new Text();
         List<String> textR = new ArrayList<>();
 //        System.out.println(e.getMarca());
-        textR.add("teste");
+        textR.add("Nina");
         text.setText(textR);
         fulfillmentMessage.setText(text);
         fulfillmentMessageList.add(fulfillmentMessage);
