@@ -1,16 +1,20 @@
 package neri.rodrigo.botmsd.repository;
 
-import neri.rodrigo.botmsd.model.EstoqueModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import neri.rodrigo.botmsd.model.Estoque;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 //import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+@Repository
+public interface EstoqueRepository extends CrudRepository<Estoque, Integer>, PagingAndSortingRepository<Estoque, Integer> {
 
-public interface EstoqueRepository extends JpaRepository<EstoqueModel, Integer> {
 
-
-//    @Query(name="select * from TB_Estoque where marca = 'AFTOSA'", nativeQuery = true)
-//    List<EstoqueModel> findAllMarcas(String marca);
+    @Query("SELECT entity FROM Estoque entity WHERE entity.marca = :marca")
+    Page<Estoque> buscaMarca(@Param("marca") String marca, Pageable pageable);
 
 }
