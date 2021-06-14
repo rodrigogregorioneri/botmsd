@@ -12,6 +12,4 @@ public interface IEstoqueInfo {
 
     String getValorTotal();
 
-
-
 }
