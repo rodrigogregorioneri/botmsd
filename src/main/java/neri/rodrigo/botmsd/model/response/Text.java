@@ -1,5 +1,5 @@
 
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.response;
 
 import java.util.List;
 import javax.annotation.Generated;

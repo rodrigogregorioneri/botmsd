@@ -1,4 +1,4 @@
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.visitas;
 
 import javax.persistence.*;
 

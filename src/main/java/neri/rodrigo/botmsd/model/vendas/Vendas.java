@@ -1,4 +1,4 @@
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.vendas;
 
 import javax.persistence.*;
 
@@ -25,8 +25,14 @@ public class Vendas {
     @Column(name = "NOMEFAMILIAPRODUTO")
     private String nome_familia_produto;
 
+    @Column(name = "CODPRODUTO")
+    private String cod_produto;
+
     @Column(name = "PRODUTO")
     private String produto;
+
+    @Column(name = "NOMEPRODUTO")
+    private String nome_produto;
 
     @Column(name = "NOMERAMOATIVIDADE")
     private String nome_ramo_atividade;
@@ -48,7 +54,6 @@ public class Vendas {
 
     @Column(name = "VALORLIQUIDO")
     private String valor_liquido;
-
 
     public String getGrupo_mercado() {
         return grupo_mercado;
@@ -153,4 +158,30 @@ public class Vendas {
     public void setValor_liquido(String valor_liquido) {
         this.valor_liquido = valor_liquido;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCod_produto() {
+        return cod_produto;
+    }
+
+    public void setCod_produto(String cod_produto) {
+        this.cod_produto = cod_produto;
+    }
+
+    public String getNome_produto() {
+        return nome_produto;
+    }
+
+    public void setNome_produto(String nome_produto) {
+        this.nome_produto = nome_produto;
+    }
+
+
 }

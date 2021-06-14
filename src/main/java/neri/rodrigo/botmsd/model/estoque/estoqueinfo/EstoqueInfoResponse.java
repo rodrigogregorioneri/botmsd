@@ -1,7 +1,7 @@
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.estoque.estoqueinfo;
 
 
-public class ResponseTest {
+public class EstoqueInfoResponse {
 
     private String produto;
 
@@ -13,7 +13,7 @@ public class ResponseTest {
 
     private String valor_total;
 
-    public ResponseTest(String produto, String quantidade, String cod_produto, String nome_centro_distribuicao, String valor_total) {
+    public EstoqueInfoResponse(String produto, String quantidade, String cod_produto, String nome_centro_distribuicao, String valor_total) {
         this.produto = produto;
         this.quantidade = quantidade;
         this.cod_produto = cod_produto;
@@ -21,10 +21,10 @@ public class ResponseTest {
         this.valor_total = valor_total;
     }
 
-    public ResponseTest() {
+    public EstoqueInfoResponse() {
     }
 
-    public void iResponseToResponseTest(IResponse iResponse){
+    public void iResponseToResponseTest(IEstoqueInfo iResponse){
         this.produto = iResponse.getProduto();
         this.quantidade = String.valueOf(iResponse.getQuantidade());
         this.cod_produto = iResponse.getCodProduto();
@@ -34,13 +34,12 @@ public class ResponseTest {
 
     @Override
     public String toString() {
-        return "ResponseTest{" +
-                "produto='" + produto + '\'' +
-                ", quantidade=" + quantidade +
-                ", cod_produto='" + cod_produto + '\'' +
-                ", nome_centro_distribuicao='" + nome_centro_distribuicao + '\'' +
-                ", valor_total=" + valor_total +
-                '}';
+        return " " +
+                "Produto: " + produto + '\'' +
+                ", Quantidade: " + quantidade +
+                ", Codigo Produto: " + cod_produto + '\'' +
+                ", Nome Centro de Distribuição: " + nome_centro_distribuicao + '\'' +
+                ", Valor Total: R$ " + valor_total;
     }
 
     public String getProduto() {

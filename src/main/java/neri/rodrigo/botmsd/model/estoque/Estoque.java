@@ -1,4 +1,4 @@
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.estoque;
 
 import javax.persistence.*;
 import java.util.List;

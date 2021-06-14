@@ -1,8 +1,7 @@
 package neri.rodrigo.botmsd.repository;
 
-import neri.rodrigo.botmsd.model.Estoque;
-import neri.rodrigo.botmsd.model.IResponse;
-import neri.rodrigo.botmsd.model.ResponseTest;
+import neri.rodrigo.botmsd.model.estoque.Estoque;
+import neri.rodrigo.botmsd.model.estoque.estoqueinfo.IEstoqueInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -22,6 +21,6 @@ public interface EstoqueRepository extends CrudRepository<Estoque, Integer>, Pag
     Page<Estoque> buscaMarca(@Param("marca") String marca, Pageable pageable);
 
     @Query("SELECT entity.cod_produto AS codProduto, entity.marca AS produto, entity.nome_centro_distribuicao AS nomeCentroDistribuicao, SUM(entity.total_estoque) AS quantidade, SUM(entity.valor_total) AS valorTotal FROM Estoque entity GROUP BY entity.cod_produto, entity.marca, entity.nome_centro_distribuicao")
-    List<IResponse> buscaMarca2(Pageable pageable);
+    Page<IEstoqueInfo> buscaMarca2(Pageable pageable);
 
 }

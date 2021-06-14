@@ -1,6 +1,6 @@
-package neri.rodrigo.botmsd.model;
+package neri.rodrigo.botmsd.model.estoque.estoqueinfo;
 
-public interface IResponse {
+public interface IEstoqueInfo {
 
     String getCodProduto();
 

@@ -32,8 +32,8 @@ public Docket api() {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("API Campeonato CSGO")
-                .description("Campeonato CSGO")
+                .title("API MSD")
+                .description("MSD Hackathon")
                 .version("1.0")
                 .build();
     }

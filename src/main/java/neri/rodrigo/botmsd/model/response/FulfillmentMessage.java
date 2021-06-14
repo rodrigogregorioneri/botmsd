@@ -1,7 +1,5 @@
 
-package neri.rodrigo.botmsd.model;
-
-import javax.annotation.Generated;
+package neri.rodrigo.botmsd.model.response;
 
 public class FulfillmentMessage {
 
