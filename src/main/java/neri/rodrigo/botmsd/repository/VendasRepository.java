@@ -21,7 +21,7 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
     @Query("SELECT entity.grupo_mercado AS grupoMercado, entity.regional AS regional, entity.ano AS ano, entity.mes AS mes, SUM(entity.valor_liquido_cota) AS valorLiquidoCota, SUM(valor_liquido) AS valorLiquido FROM Vendas entity GROUP BY entity.grupo_mercado, entity.regional,entity.ano, entity.mes")
     Page<IVendasXcota> vendasXcota(Pageable pageable);
 
-    @Query("SELECT entity.grupo_mercado AS grupoMercado, entity.regional AS regional, entity.vendedor AS vendedor, entity.nome_familia_produto AS nomeFamiliaProduto, entity.produto AS produto, entity.ano AS ano, entity.mes AS mes, SUM(entity.valor_liquido_cota) AS valorLiquidoCota, SUM(entity.valor_liquido) AS valorLiquido FROM Vendas entity GROUP BY entity.grupo_mercado, entity.regional, entity.vendedor, entity.produto, entity.ano, entity.mes")
+    @Query("SELECT entity.grupo_mercado AS grupoMercado, entity.regional AS regional, entity.vendedor AS vendedor, entity.nome_familia_produto AS nomeFamiliaProduto, entity.produto AS produto, entity.ano AS ano, entity.mes AS mes, SUM(entity.valor_liquido_cota) AS valorLiquidoCota, SUM(entity.valor_liquido) AS valorLiquido FROM Vendas entity GROUP BY entity.grupo_mercado, entity.regional, entity.vendedor, entity.nome_familia_produto, entity.produto, entity.ano, entity.mes")
     Page<IRealizadoXcotaFamiliaProduto> realizadoXcotaFamiliaProduto(Pageable pageable);
 
     @Query("SELECT entity.grupo_mercado AS grupoMercado, entity.produto AS produto, entity.ano AS ano, entity.mes AS mes, SUM(entity.valor_liquido_cota) AS valorLiquidoCota, SUM(entity.valor_liquido) AS valorLiquido FROM Vendas entity GROUP BY entity.grupo_mercado, entity.vendedor, entity.produto, entity.ano, entity.mes")
@@ -32,5 +32,7 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
 
     @Query("SELECT entity.grupo_mercado AS grupoMercado, entity.regional AS regional, entity.vendedor AS vendedor, entity.cliente AS cliente, entity.ano AS ano, entity.mes AS mes, SUM(valor_liquido) AS valorLiquido FROM Vendas entity GROUP BY entity.grupo_mercado, entity.regional, entity.vendedor, entity.cliente, entity.ano, entity.mes")
     Page<IRealizadoParaOclienteEnumDeterminadoPeriodo> realizadoParaOclienteEmUmDeterminadoPeriodo(Pageable pageable);
+
+
 
 }

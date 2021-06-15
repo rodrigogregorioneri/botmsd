@@ -1,6 +1,7 @@
 package neri.rodrigo.botmsd.repository;
 
 import neri.rodrigo.botmsd.model.estoque.Estoque;
+import neri.rodrigo.botmsd.model.estoque.buscatotalestoqueporproduto.ITotalEstoquePorProduto;
 import neri.rodrigo.botmsd.model.estoque.estoqueinfo.IEstoqueInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,5 +23,8 @@ public interface EstoqueRepository extends CrudRepository<Estoque, Integer>, Pag
 
     @Query("SELECT entity.cod_produto AS codProduto, entity.marca AS produto, entity.nome_centro_distribuicao AS nomeCentroDistribuicao, SUM(entity.total_estoque) AS quantidade, SUM(entity.valor_total) AS valorTotal FROM Estoque entity GROUP BY entity.cod_produto, entity.marca, entity.nome_centro_distribuicao")
     Page<IEstoqueInfo> buscaMarca2(Pageable pageable);
+
+    @Query("SELECT entity.cod_produto AS codProduto ,entity.nomeproduto AS nomeProduto, SUM(entity.total_estoque) AS somaEstoque FROM Estoque entity WHERE entity.nomeproduto LIKE %:nome% GROUP BY entity.cod_produto,entity.nomeproduto")
+    Page<ITotalEstoquePorProduto> buscaTotalEstoquePorProduto(@Param("nome") String nome_produto, Pageable pageable);
 
 }

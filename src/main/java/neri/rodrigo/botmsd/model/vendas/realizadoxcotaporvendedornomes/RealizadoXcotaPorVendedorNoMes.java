@@ -87,13 +87,12 @@ public class RealizadoXcotaPorVendedorNoMes {
 
     @Override
     public String toString() {
-        return "RealizadoXcotaPorVendedorNoMes{" +
-                "grupoMercado='" + grupoMercado + '\'' +
-                ", produto='" + produto + '\'' +
-                ", ano='" + ano + '\'' +
-                ", mes='" + mes + '\'' +
-                ", valorLiquidoCota='" + valorLiquidoCota + '\'' +
-                ", valorLiquido='" + valorLiquido + '\'' +
-                '}';
+        return " " +
+                "  Grupo Mercado: " + grupoMercado + '\'' +
+                ", Produto: " + produto + '\'' +
+                ", Ano: " + ano + '\'' +
+                ", Mes: " + mes + '\'' +
+                ", Valor LiquidoCota: " + valorLiquidoCota + '\'' +
+                ", Valor Liquido: " + valorLiquido + '\'';
     }
 }

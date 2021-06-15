@@ -12,19 +12,18 @@ public class RealizadoParaOclienteEnumDeterminadoPeriodo {
 
     private String mes;
 
-    private String valorLiquidoCota;
 
     private String valorLiquido;
 
     public RealizadoParaOclienteEnumDeterminadoPeriodo() {
     }
 
-    public RealizadoParaOclienteEnumDeterminadoPeriodo(String grupoMercado, String produto, String ano, String mes, String valorLiquidoCota, String valorLiquido) {
+    public RealizadoParaOclienteEnumDeterminadoPeriodo(String grupoMercado, String produto, String ano, String mes,  String valorLiquido) {
         this.grupoMercado = grupoMercado;
         this.produto = produto;
         this.ano = ano;
         this.mes = mes;
-        this.valorLiquidoCota = valorLiquidoCota;
+
         this.valorLiquido = valorLiquido;
     }
 
@@ -60,14 +59,6 @@ public class RealizadoParaOclienteEnumDeterminadoPeriodo {
         this.mes = mes;
     }
 
-    public String getValorLiquidoCota() {
-        return valorLiquidoCota;
-    }
-
-    public void setValorLiquidoCota(String valorLiquidoCota) {
-        this.valorLiquidoCota = valorLiquidoCota;
-    }
-
     public String getValorLiquido() {
         return valorLiquido;
     }
@@ -81,19 +72,16 @@ public class RealizadoParaOclienteEnumDeterminadoPeriodo {
         this.produto = iResponse.getProduto();
         this.ano = iResponse.getAno();
         this.mes = iResponse.getMes();
-        this.valorLiquidoCota = iResponse.getValorLiquidoCota();
         this.valorLiquido = iResponse.getValorLiquido();
     }
 
     @Override
     public String toString() {
-        return "RealizadoParaOclienteEnumDeterminadoPeriodo{" +
-                "grupoMercado='" + grupoMercado + '\'' +
-                ", produto='" + produto + '\'' +
-                ", ano='" + ano + '\'' +
-                ", mes='" + mes + '\'' +
-                ", valorLiquidoCota='" + valorLiquidoCota + '\'' +
-                ", valorLiquido='" + valorLiquido + '\'' +
-                '}';
+        return " " +
+                "  Grupo Mercado: " + grupoMercado + '\'' +
+                ", Produto: " + produto + '\'' +
+                ", Ano: " + ano + '\'' +
+                ", mes: " + mes + '\'' +
+                ", Valor Liquido: " + valorLiquido + '\'';
     }
 }

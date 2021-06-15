@@ -10,8 +10,6 @@ public interface IRealizadoParaOclienteEnumDeterminadoPeriodo {
 
     String getMes();
 
-    String getValorLiquidoCota();
-
     String getValorLiquido();
 
 

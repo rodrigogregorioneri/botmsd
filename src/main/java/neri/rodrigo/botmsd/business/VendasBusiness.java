@@ -55,7 +55,7 @@ public class VendasBusiness {
 
 
     public Page<IVendasXcota> vendasXcota(){
-        Pageable firstPageWithTwoElements = PageRequest.of(-1, 10);
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
         Page<IVendasXcota> vendasXcota =   vendasRepository.vendasXcota(firstPageWithTwoElements);
         return vendasXcota;
     }

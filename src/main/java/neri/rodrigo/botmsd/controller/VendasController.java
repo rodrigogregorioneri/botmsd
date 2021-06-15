@@ -20,9 +20,31 @@ public class VendasController {
     @Autowired
     private VendasBusiness vendasBusiness;
 
-    @PostMapping("/vendas")
+    @PostMapping("/vendasxcota")
     public Response getVendasXcota(@RequestBody JsonNode request){
         return vendasBusiness.getVendasXcota(request);
     }
+
+    @PostMapping("/realizadoxcotaporvendedornomes")
+    public Response getRealizadoXcotaPorVendedorNoMes(@RequestBody JsonNode request){
+        return vendasBusiness.getRealizadoXcotaPorVendedorNoMes(request);
+    }
+
+    @PostMapping("/realizadoxcotafamiliaproduto")
+    public Response getRealizadoXcotaFamiliaProduto(@RequestBody JsonNode request){
+        return vendasBusiness.getRealizadoXcotaFamiliaProduto(request);
+    }
+
+    @PostMapping("/realizadoxcotaporprodutoevendedor")
+    public Response getRealizadoXcotaPorProdutoEvendedor(@RequestBody JsonNode request){
+        return vendasBusiness.getRealizadoXcotaPorProdutoEvendedor(request);
+    }
+
+    @PostMapping("/realizadoparaoclienteenumdeterminadoperiodo")
+    public Response getRealizadoParaOclienteEnumDeterminadoPeriodo(@RequestBody JsonNode request){
+        return vendasBusiness.getRealizadoParaOclienteEnumDeterminadoPeriodo(request);
+    }
+
+
 
 }
