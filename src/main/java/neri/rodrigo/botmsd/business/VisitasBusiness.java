@@ -32,8 +32,9 @@ public class VisitasBusiness {
         Text text = new Text();
         List<String> textR = new ArrayList<>();
         List<String> reg = request.getQueryResult().getParameters().getRegional();
-        System.out.println(reg);
-        System.out.println(reg.get(0));
+
+        System.out.println(request.getQueryResult().getParameters());
+//        System.out.println(reg.get(0));
         for(IVistasItentDois e :  getVistasItentDois(reg.get(0))){
             VistasItentDois estoqueInfoResponse = new VistasItentDois();
             estoqueInfoResponse.convert(e);

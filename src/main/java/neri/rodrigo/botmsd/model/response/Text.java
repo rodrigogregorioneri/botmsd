@@ -2,10 +2,8 @@
 package neri.rodrigo.botmsd.model.response;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 
-@Generated("jsonschema2pojo")
 public class Text {
 
 

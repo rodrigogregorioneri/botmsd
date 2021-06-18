@@ -2,12 +2,15 @@
 package neri.rodrigo.botmsd.model.request;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Parameters {
 
     private String produtos;
 
+    @JsonProperty("Regional")
     private List<String> regional;
 
     public String getProdutos() {
