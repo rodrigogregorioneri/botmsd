@@ -1,7 +1,9 @@
 package neri.rodrigo.botmsd.repository;
 
 import neri.rodrigo.botmsd.model.estoque.Estoque;
+import neri.rodrigo.botmsd.model.vendas.realizadofamiliaessemes.IRealizadoFamiliaEsseMes;
 import neri.rodrigo.botmsd.model.visitas.Visitas;
+import neri.rodrigo.botmsd.model.visitas.listadzclientessemvisitastrintadias.IListaDezClientesSemVisitasTrintaDias;
 import neri.rodrigo.botmsd.model.visitas.visitasitentdois.IVistasItentDois;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +27,14 @@ public interface VisitasRepository extends JpaRepository<Visitas, Integer> {
     Page<IVistasItentDois> intent2(@Param("regional") String regional, Pageable pageable);
 
 
+    @Query(value = "SELECT top 9 CLIENTE, max(DATEDIFF(day, [DATA], GETDATE())) as Dias\n" +
+            "  FROM [DB_Hackaton].[dbo].[TB_Visitas]\n" +
+            "  where DATEDIFF(day, [DATA], GETDATE()) > '29'\n" +
+            "  and STATUS_VISITA <> 'ENVIADA'\n" +
+            "  and ACAO in ('Visita')\n" +
+            "  group by CLIENTE\n" +
+            "  order by CLIENTE", nativeQuery = true)
+    Page<IListaDezClientesSemVisitasTrintaDias> listaDezClientesSemVisitasTrintaDias(Pageable pageable);
 
 
 }

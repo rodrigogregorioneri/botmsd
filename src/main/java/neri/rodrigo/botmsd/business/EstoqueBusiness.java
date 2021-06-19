@@ -25,14 +25,13 @@ public class EstoqueBusiness {
     @Autowired
     EstoqueRepository estoqueRepository;
 
-
     public Response getTotalEstoquePorProduto(Request request){
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
         Text text = new Text();
         List<String> textR = new ArrayList<>();
-        for(ITotalEstoquePorProduto e :  getTotalEstoquePorProduto(request.getQueryResult().getParameters().getProdutos())){
+        for(ITotalEstoquePorProduto e : getTotalEstoquePorProduto(request.getQueryResult().getParameters().getProdutos())){
             TotalEstoquePorProduto estoqueInfoResponse = new TotalEstoquePorProduto();
             estoqueInfoResponse.convert(e);
             textR.add(estoqueInfoResponse.toString());
@@ -47,7 +46,6 @@ public class EstoqueBusiness {
         Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
         return estoqueRepository.buscaTotalEstoquePorProduto(nome_produto,firstPageWithTwoElements);
     }
-
 
 ///////////  getVendasXCota
     public Response getVendas(JsonNode request){

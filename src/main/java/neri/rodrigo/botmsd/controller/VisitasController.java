@@ -19,4 +19,10 @@ public class VisitasController {
     public Response getVistasItentDois(@RequestBody Request request){
         return visitasBusiness.getVistasItentDois(request);
     }
+
+    @PostMapping("/listadezclientessemvisitastrintadias")
+    public Response getListaDezClientesSemVisitasTrintaDias(@RequestBody JsonNode request){
+        return visitasBusiness.getListaDezClientesSemVisitasTrintaDias(request);
+    }
+
 }

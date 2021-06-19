@@ -3,6 +3,7 @@ package neri.rodrigo.botmsd.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import neri.rodrigo.botmsd.business.VendasBusiness;
+import neri.rodrigo.botmsd.model.request.Request;
 import neri.rodrigo.botmsd.model.response.Response;
 import neri.rodrigo.botmsd.repository.VendasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,18 @@ public class VendasController {
     public Response getRealizadoParaOclienteEnumDeterminadoPeriodo(@RequestBody JsonNode request){
         return vendasBusiness.getRealizadoParaOclienteEnumDeterminadoPeriodo(request);
     }
+
+    @PostMapping("/realizadofamiliaessemes")
+    public Response getRealizadoFamiliaEsseMes(@RequestBody Request request){
+        return vendasBusiness.getRealizadoFamiliaEsseMes(request);
+    }
+
+    @PostMapping("/desempenhodevendasdogerenteyparaprodutox")
+    public Response getDesempenhoDeVendasDoGerenteYparaProdutoX(@RequestBody Request request){
+        return vendasBusiness.getDesempenhoDeVendasDoGerenteYparaProdutoX(request);
+    }
+
+
 
 
 

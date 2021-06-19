@@ -63,7 +63,7 @@ public class RealizadoFamiliaEsseMes {
         this.desempenho = desempenho;
     }
 
-    private void convert(IRealizadoFamiliaEsseMes i){
+    public void convert(IRealizadoFamiliaEsseMes i){
         this.familia = i.getFamilia();
         this.ano = i.getAno();
         this.mes = i.getMes();
