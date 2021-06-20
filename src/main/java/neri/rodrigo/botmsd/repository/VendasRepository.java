@@ -95,7 +95,7 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
     Page<IQuantidadeDeVendasTotalParaCadaCliente> quantidadeDeVendasTotalParaCadaCliente(@Param("vendedor") String vendedor, @Param("cliente") String cliente, Pageable pageable);
 
 
-    //  Quanto a regional X  vendeu esse mês? ✔
+    // Itent 12 Quanto a regional X  vendeu esse mês? ✔
     @Query(value = "SELECT REGIONAL,MES,SUM(VALORLIQUIDO) AS VENDIDO\n" +
             "FROM TB_VENDAS\n" +
             "WHERE REGIONAL = :regional and ANO = year(GETDATE())and MES= month(GETDATE()) -2\n" +

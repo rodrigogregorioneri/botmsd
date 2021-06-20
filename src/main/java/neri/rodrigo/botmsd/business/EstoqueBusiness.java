@@ -30,6 +30,7 @@ public class EstoqueBusiness {
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
         Text text = new Text();
+        String nomeProduto = request.getQueryResult().getParameters().getProduto();
         List<String> textR = new ArrayList<>();
         for(ITotalEstoquePorProduto e : getTotalEstoquePorProduto(request.getQueryResult().getParameters().getProdutos())){
             TotalEstoquePorProduto estoqueInfoResponse = new TotalEstoquePorProduto();

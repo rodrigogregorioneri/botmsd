@@ -34,11 +34,11 @@ public class VisitasBusiness {
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
         Text text = new Text();
         List<String> textR = new ArrayList<>();
-        List<String> reg = request.getQueryResult().getParameters().getRegional();
+        String reg = request.getQueryResult().getParameters().getRegional();
 
         System.out.println(request.getQueryResult().getParameters());
 
-        for(IVistasItentDois e :  getVistasItentDois(reg.get(0))){
+        for(IVistasItentDois e :  getVistasItentDois(reg)){
             VistasItentDois estoqueInfoResponse = new VistasItentDois();
             estoqueInfoResponse.convert(e);
             textR.add(estoqueInfoResponse.toString());

@@ -47,9 +47,9 @@ public class VendasBusiness {
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
-        String vendedor = "";
+        String regional = request.getQueryResult().getParameters().getRegional();
         List<String> textR = new ArrayList<>();
-        for(ISomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional e :  somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(vendedor )){
+        for(ISomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional e :  somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional("REGIONAL "+regional)){
             SomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional = new SomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional();
             somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional.convert(e);
             textR.add(somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional.toString());
@@ -73,8 +73,8 @@ public class VendasBusiness {
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
-        String vendedor = "";
-        String cliente = "";
+        String vendedor = request.getQueryResult().getParameters().getVendedor();
+        String cliente = request.getQueryResult().getParameters().getCliente();
         List<String> textR = new ArrayList<>();
         for(IQuantidadeDeVendasTotalParaCadaCliente e :  quantidadeDeVendasTotalParaCadaCliente(vendedor, cliente)){
             QuantidadeDeVendasTotalParaCadaCliente realizadoDoColaboradorXesseMesResponse = new QuantidadeDeVendasTotalParaCadaCliente();
@@ -99,7 +99,7 @@ public class VendasBusiness {
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
-        String vendedor = "";
+        String vendedor = request.getQueryResult().getParameters().getVendedor();
         List<String> textR = new ArrayList<>();
         for(IRealizadoDoColaboradorXesseMes e :  realizadoDoColaboradorXesseMes(vendedor)){
             RealizadoDoColaboradorXesseMes realizadoDoColaboradorXesseMesResponse = new RealizadoDoColaboradorXesseMes();
@@ -127,7 +127,7 @@ public class VendasBusiness {
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
-        String familia_produto = "";
+        String familia_produto = request.getQueryResult().getParameters().getNomeFamiliaProduto();
         List<String> textR = new ArrayList<>();
         for(IRealizadoFamiliaEsseMes e :  realizadoFamiliaEsseMes(familia_produto)){
             RealizadoFamiliaEsseMes realizadoFamiliaEsseMesResponse = new RealizadoFamiliaEsseMes();
@@ -152,8 +152,8 @@ public class VendasBusiness {
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
-        String vendedor = "";
-        String produto = "";
+        String vendedor = request.getQueryResult().getParameters().getVendedor();
+        String produto = request.getQueryResult().getParameters().getProduto();
         List<String> textR = new ArrayList<>();
         for(IDesempenhoDeVendasDoGerenteYparaProdutoX e :  desempenhoDeVendasDoGerenteYparaProdutoX(vendedor,produto)){
             DesempenhoDeVendasDoGerenteYparaProdutoX desempenhoDeVendasDoGerenteYparaProdutoXResponse = new DesempenhoDeVendasDoGerenteYparaProdutoX();
@@ -178,141 +178,141 @@ public class VendasBusiness {
 
 
 
-    // VENDASXCOTAS
-
-    public Response getVendasXcota(JsonNode request){
-        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
-        Response response = new Response();
-        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
-        Text text = new Text();
-
-        List<String> textR = new ArrayList<>();
-        for(IVendasXcota e :  vendasXcota()){
-            VendasXestoqueResponse vendasXestoqueResponse = new VendasXestoqueResponse();
-            vendasXestoqueResponse.iVendasXcotaToVendasXestoqueResponse(e);
-            textR.add(vendasXestoqueResponse.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
-        return response;
-    }
-
-
-    public Page<IVendasXcota> vendasXcota(){
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
-        Page<IVendasXcota> vendasXcota =   vendasRepository.vendasXcota(firstPageWithTwoElements);
-        return vendasXcota;
-    }
-
-    // realizadoXcotaFamiliaProduto
-
-    public Response getRealizadoXcotaFamiliaProduto(JsonNode request){
-        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
-        Response response = new Response();
-        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
-        Text text = new Text();
-
-        List<String> textR = new ArrayList<>();
-        for(IRealizadoXcotaFamiliaProduto e :  realizadoXcotaFamiliaProduto()){
-            RealizadoXcotaFamiliaProduto realizadoXcotaFamiliaProduto = new RealizadoXcotaFamiliaProduto();
-            realizadoXcotaFamiliaProduto.iResponseToResponseTest(e);
-            textR.add(realizadoXcotaFamiliaProduto.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
-        return response;
-    }
-
-
-    public Page<IRealizadoXcotaFamiliaProduto> realizadoXcotaFamiliaProduto(){
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
-        Page<IRealizadoXcotaFamiliaProduto> realizadoXcotaFamiliaProduto =   vendasRepository.realizadoXcotaFamiliaProduto(firstPageWithTwoElements);
-        return realizadoXcotaFamiliaProduto;
-    }
-
-    // realizadoXcotaPorProdutoEvendedor
-
-    public Response getRealizadoXcotaPorProdutoEvendedor(JsonNode request){
-        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
-        Response response = new Response();
-        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
-        Text text = new Text();
-
-        List<String> textR = new ArrayList<>();
-        for(IRealizadoXcotaPorProdutoEvendedor e :  realizadoXcotaPorProdutoEvendedor()){
-            RealizadoXcotaPorProdutoEvendedor realizadoXcotaPorProdutoEvendedor = new RealizadoXcotaPorProdutoEvendedor();
-            realizadoXcotaPorProdutoEvendedor.iResponseToResponseTest(e);
-            textR.add(realizadoXcotaPorProdutoEvendedor.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
-        return response;
-    }
-
-    public Page<IRealizadoXcotaPorProdutoEvendedor> realizadoXcotaPorProdutoEvendedor(){
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
-        Page<IRealizadoXcotaPorProdutoEvendedor> realizadoXcotaPorProdutoEvendedor =   vendasRepository.realizadoXcotaPorProdutoEvendedor(firstPageWithTwoElements);
-        return realizadoXcotaPorProdutoEvendedor;
-    }
-
-    // realizadoXcotaPorVendedorNoMes
-
-    public Response getRealizadoXcotaPorVendedorNoMes(JsonNode request){
-        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
-        Response response = new Response();
-        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
-        Text text = new Text();
-
-        List<String> textR = new ArrayList<>();
-        for(IRealizadoXcotaPorVendedorNoMes e :  realizadoXcotaPorVendedorNoMes()){
-            RealizadoXcotaPorVendedorNoMes realizadoXcotaPorVendedorNoMes = new RealizadoXcotaPorVendedorNoMes();
-            realizadoXcotaPorVendedorNoMes.iResponseToResponseTest(e);
-            textR.add(realizadoXcotaPorVendedorNoMes.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
-        return response;
-    }
-
-
-    public Page<IRealizadoXcotaPorVendedorNoMes> realizadoXcotaPorVendedorNoMes(){
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
-        Page<IRealizadoXcotaPorVendedorNoMes> realizadoXcotaPorVendedorNoMes =   vendasRepository.realizadoXcotaPorVendedorNoMes(firstPageWithTwoElements);
-        return realizadoXcotaPorVendedorNoMes;
-    }
-
-    // realizadoParaOclienteEmUmDeterminadoPeriodo
-
-    public Response getRealizadoParaOclienteEnumDeterminadoPeriodo(JsonNode request){
-        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
-        Response response = new Response();
-        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
-        Text text = new Text();
-
-        List<String> textR = new ArrayList<>();
-        for(IRealizadoParaOclienteEnumDeterminadoPeriodo e :  realizadoParaOclienteEmUmDeterminadoPeriodo()){
-            RealizadoParaOclienteEnumDeterminadoPeriodo realizadoParaOclienteEnumDeterminadoPeriodo = new RealizadoParaOclienteEnumDeterminadoPeriodo();
-            realizadoParaOclienteEnumDeterminadoPeriodo.iResponseToResponseTest(e);
-            textR.add(realizadoParaOclienteEnumDeterminadoPeriodo.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
-        return response;
-    }
-
-    public Page<IRealizadoParaOclienteEnumDeterminadoPeriodo> realizadoParaOclienteEmUmDeterminadoPeriodo(){
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
-        Page<IRealizadoParaOclienteEnumDeterminadoPeriodo> realizadoParaOclienteEmUmDeterminadoPeriodo =   vendasRepository.realizadoParaOclienteEmUmDeterminadoPeriodo(firstPageWithTwoElements);
-        return realizadoParaOclienteEmUmDeterminadoPeriodo;
-    }
-
-    // CRIA OBJETO DE RESPOSTA
-
+//    // VENDASXCOTAS
+//
+//    public Response getVendasXcota(JsonNode request){
+//        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+//        Response response = new Response();
+//        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+//        Text text = new Text();
+//
+//        List<String> textR = new ArrayList<>();
+//        for(IVendasXcota e :  vendasXcota()){
+//            VendasXestoqueResponse vendasXestoqueResponse = new VendasXestoqueResponse();
+//            vendasXestoqueResponse.iVendasXcotaToVendasXestoqueResponse(e);
+//            textR.add(vendasXestoqueResponse.toString());
+//            text.setText(textR);
+//        }
+//        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+//        response.setFulfillmentMessages(fulfillmentMessageList);
+//        return response;
+//    }
+//
+//
+//    public Page<IVendasXcota> vendasXcota(){
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+//        Page<IVendasXcota> vendasXcota =   vendasRepository.vendasXcota(firstPageWithTwoElements);
+//        return vendasXcota;
+//    }
+//
+//    // realizadoXcotaFamiliaProduto
+//
+//    public Response getRealizadoXcotaFamiliaProduto(JsonNode request){
+//        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+//        Response response = new Response();
+//        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+//        Text text = new Text();
+//
+//        List<String> textR = new ArrayList<>();
+//        for(IRealizadoXcotaFamiliaProduto e :  realizadoXcotaFamiliaProduto()){
+//            RealizadoXcotaFamiliaProduto realizadoXcotaFamiliaProduto = new RealizadoXcotaFamiliaProduto();
+//            realizadoXcotaFamiliaProduto.iResponseToResponseTest(e);
+//            textR.add(realizadoXcotaFamiliaProduto.toString());
+//            text.setText(textR);
+//        }
+//        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+//        response.setFulfillmentMessages(fulfillmentMessageList);
+//        return response;
+//    }
+//
+//
+//    public Page<IRealizadoXcotaFamiliaProduto> realizadoXcotaFamiliaProduto(){
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+//        Page<IRealizadoXcotaFamiliaProduto> realizadoXcotaFamiliaProduto =   vendasRepository.realizadoXcotaFamiliaProduto(firstPageWithTwoElements);
+//        return realizadoXcotaFamiliaProduto;
+//    }
+//
+//    // realizadoXcotaPorProdutoEvendedor
+//
+//    public Response getRealizadoXcotaPorProdutoEvendedor(JsonNode request){
+//        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+//        Response response = new Response();
+//        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+//        Text text = new Text();
+//
+//        List<String> textR = new ArrayList<>();
+//        for(IRealizadoXcotaPorProdutoEvendedor e :  realizadoXcotaPorProdutoEvendedor()){
+//            RealizadoXcotaPorProdutoEvendedor realizadoXcotaPorProdutoEvendedor = new RealizadoXcotaPorProdutoEvendedor();
+//            realizadoXcotaPorProdutoEvendedor.iResponseToResponseTest(e);
+//            textR.add(realizadoXcotaPorProdutoEvendedor.toString());
+//            text.setText(textR);
+//        }
+//        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+//        response.setFulfillmentMessages(fulfillmentMessageList);
+//        return response;
+//    }
+//
+//    public Page<IRealizadoXcotaPorProdutoEvendedor> realizadoXcotaPorProdutoEvendedor(){
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+//        Page<IRealizadoXcotaPorProdutoEvendedor> realizadoXcotaPorProdutoEvendedor =   vendasRepository.realizadoXcotaPorProdutoEvendedor(firstPageWithTwoElements);
+//        return realizadoXcotaPorProdutoEvendedor;
+//    }
+//
+//    // realizadoXcotaPorVendedorNoMes
+//
+//    public Response getRealizadoXcotaPorVendedorNoMes(JsonNode request){
+//        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+//        Response response = new Response();
+//        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+//        Text text = new Text();
+//
+//        List<String> textR = new ArrayList<>();
+//        for(IRealizadoXcotaPorVendedorNoMes e :  realizadoXcotaPorVendedorNoMes()){
+//            RealizadoXcotaPorVendedorNoMes realizadoXcotaPorVendedorNoMes = new RealizadoXcotaPorVendedorNoMes();
+//            realizadoXcotaPorVendedorNoMes.iResponseToResponseTest(e);
+//            textR.add(realizadoXcotaPorVendedorNoMes.toString());
+//            text.setText(textR);
+//        }
+//        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+//        response.setFulfillmentMessages(fulfillmentMessageList);
+//        return response;
+//    }
+//
+//
+//    public Page<IRealizadoXcotaPorVendedorNoMes> realizadoXcotaPorVendedorNoMes(){
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+//        Page<IRealizadoXcotaPorVendedorNoMes> realizadoXcotaPorVendedorNoMes =   vendasRepository.realizadoXcotaPorVendedorNoMes(firstPageWithTwoElements);
+//        return realizadoXcotaPorVendedorNoMes;
+//    }
+//
+//    // realizadoParaOclienteEmUmDeterminadoPeriodo
+//
+//    public Response getRealizadoParaOclienteEnumDeterminadoPeriodo(JsonNode request){
+//        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+//        Response response = new Response();
+//        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+//        Text text = new Text();
+//
+//        List<String> textR = new ArrayList<>();
+//        for(IRealizadoParaOclienteEnumDeterminadoPeriodo e :  realizadoParaOclienteEmUmDeterminadoPeriodo()){
+//            RealizadoParaOclienteEnumDeterminadoPeriodo realizadoParaOclienteEnumDeterminadoPeriodo = new RealizadoParaOclienteEnumDeterminadoPeriodo();
+//            realizadoParaOclienteEnumDeterminadoPeriodo.iResponseToResponseTest(e);
+//            textR.add(realizadoParaOclienteEnumDeterminadoPeriodo.toString());
+//            text.setText(textR);
+//        }
+//        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+//        response.setFulfillmentMessages(fulfillmentMessageList);
+//        return response;
+//    }
+//
+//    public Page<IRealizadoParaOclienteEnumDeterminadoPeriodo> realizadoParaOclienteEmUmDeterminadoPeriodo(){
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+//        Page<IRealizadoParaOclienteEnumDeterminadoPeriodo> realizadoParaOclienteEmUmDeterminadoPeriodo =   vendasRepository.realizadoParaOclienteEmUmDeterminadoPeriodo(firstPageWithTwoElements);
+//        return realizadoParaOclienteEmUmDeterminadoPeriodo;
+//    }
+//
+//    // CRIA OBJETO DE RESPOSTA
+//
     public Response createResponse(List<FulfillmentMessage>fulfillmentMessageList,Response response,FulfillmentMessage fulfillmentMessage,Text text){
         fulfillmentMessageList.add(fulfillmentMessage);
         fulfillmentMessage.setText(text);
