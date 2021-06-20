@@ -2,6 +2,11 @@ package neri.rodrigo.botmsd.repository;
 
 import neri.rodrigo.botmsd.model.vendas.Vendas;
 import neri.rodrigo.botmsd.model.vendas.desempenhodevendasdogerenteyparaprodutox.IDesempenhoDeVendasDoGerenteYparaProdutoX;
+import neri.rodrigo.botmsd.model.vendas.itentcinco.IItent5;
+import neri.rodrigo.botmsd.model.vendas.itentdez.IItent10;
+import neri.rodrigo.botmsd.model.vendas.itentnove.IItent9;
+import neri.rodrigo.botmsd.model.vendas.itentquatro.IItent4;
+import neri.rodrigo.botmsd.model.vendas.itentseis.IItent6;
 import neri.rodrigo.botmsd.model.vendas.quantidadedevendastotaiparacadacliente.IQuantidadeDeVendasTotalParaCadaCliente;
 import neri.rodrigo.botmsd.model.vendas.quantoaregionaixvendeuessemes.IQuantoAregionalXvendeuEsseMes;
 import neri.rodrigo.botmsd.model.vendas.realizadodocolaboradorxessemes.IRealizadoDoColaboradorXesseMes;
@@ -101,4 +106,99 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
             "WHERE REGIONAL = :regional and ANO = year(GETDATE())and MES= month(GETDATE()) -2\n" +
             "GROUP BY REGIONAL,MES",nativeQuery = true)
     Page<ISomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional>  somaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(@Param("regional") String regional, Pageable pageable);
+
+
+    // Itent 4
+    @Query(value = "SELECT PRODUTO as Linha\n" +
+            "\t\t,ANO\n" +
+            "\t\t,MES\n" +
+            "\t\t,sum(VALORLIQUIDO_COTA) as Meta\n" +
+            "\t\t,sum(VALORLIQUIDO) as Realizado\n" +
+            "\t\t,(case when sum(VALORLIQUIDO_COTA) = '0.00' \n" +
+            "\t\t\tthen cast(round((sum(VALORLIQUIDO) * 100) / 100, 2) as decimal(10,2))\n" +
+            "\t\t\telse cast(round((sum(VALORLIQUIDO) * 100) / sum(VALORLIQUIDO_COTA), 2) as decimal(10,2))\n" +
+            "\t\t end) as [Desempenho%]\n" +
+            "FROM [DB_Hackaton].[dbo].[TB_Vendas]\n" +
+            "where 1=1\n" +
+            "and PRODUTO like '%:produto%'\n" +
+            "and ANO = year(GETDATE())\n" +
+            "and MES = month(GETDATE()) - 2\n" +
+            "group by PRODUTO, ANO, MES\n" +
+            "order by PRODUTO, ANO, MES",nativeQuery = true)
+    Page<IItent4> itent4(@Param("produto") String produto, Pageable pageable);
+
+    // Itent 5
+    @Query(value = "SELECT REGIONAL\n" +
+            "\t\t,ANO\n" +
+            "\t\t,MES\n" +
+            "\t\t,sum(VALORLIQUIDO_COTA) as Meta\n" +
+            "\t\t,sum(VALORLIQUIDO) as Realizado\n" +
+            "\t\t,(case when sum(VALORLIQUIDO_COTA) = '0.00' \n" +
+            "\t\t\tthen cast(round((sum(VALORLIQUIDO) * 100) / 100, 2) as decimal(10,2))\n" +
+            "\t\t\telse cast(round((sum(VALORLIQUIDO) * 100) / sum(VALORLIQUIDO_COTA), 2) as decimal(10,2))\n" +
+            "\t\t end) as [Desempenho%]\n" +
+            "FROM [DB_Hackaton].[dbo].[TB_Vendas]\n" +
+            "where 1=1\n" +
+            "and REGIONAL like '%:regional%'\n" +
+            "and ANO = year(GETDATE())\n" +
+            "and MES = month(GETDATE()) - 2\n" +
+            "group by REGIONAL, ANO, MES\n" +
+            "order by REGIONAL, ANO, MES",nativeQuery = true)
+    Page<IItent5> itent5(@Param("regional") String regional, Pageable pageable);
+
+    // Itent 6
+    @Query(value = "SELECT PRODUTO\n" +
+            "\t\t,ANO\n" +
+            "\t\t,MES\n" +
+            "\t\t,sum(VALORLIQUIDO_COTA) as Meta\n" +
+            "\t\t,sum(VALORLIQUIDO) as Realizado\n" +
+            "\t\t,(case when sum(VALORLIQUIDO_COTA) = '0.00' \n" +
+            "\t\t\tthen cast(round((sum(VALORLIQUIDO) * 100) / 100, 2) as decimal(10,2))\n" +
+            "\t\t\telse cast(round((sum(VALORLIQUIDO) * 100) / sum(VALORLIQUIDO_COTA), 2) as decimal(10,2))\n" +
+            "\t\t end) as [Desempenho%]\n" +
+            "FROM [DB_Hackaton].[dbo].[TB_Vendas]\n" +
+            "where 1=1\n" +
+            "and PRODUTO like %:produto%\n" +
+            "and ANO = year(GETDATE())\n" +
+            "and MES = month(GETDATE()) - 2\n" +
+            "group by PRODUTO, ANO, MES\n" +
+            "order by PRODUTO, ANO, MES",nativeQuery = true)
+    Page<IItent6> itent6(@Param("produto") String produto, Pageable pageable);
+
+    // Itent 9
+    @Query(value = "SELECT \n" +
+            " VENDEDOR ,Cliente,SUM(VALORLIQUIDO) AS Realizado\n" +
+            "FROM TB_VENDAS\n" +
+            "WHERE VENDEDOR = :vendedor and CLIENTE = :cliente and ANO = year(GETDATE()) and MES = month(GETDATE()) -2\n" +
+            "GROUP BY VENDEDOR,Cliente,ANO,MES",nativeQuery = true)
+    Page<IItent9> itent9(@Param("vendedor") String vendedor, @Param("cliente") String cliente,Pageable pageable);
+
+    // Itent 10
+    @Query(value = "SELECT TB_VENDAS.VENDEDOR\n" +
+            "\t\t,TB_VENDAS.PRODUTO\n" +
+            "\t\t,vendido_ano_passado.VENDIDO as vendido_ano_passado\n" +
+            "\t\t,SUM(VALORLIQUIDO) AS vendido_ano_atual\n" +
+            "\t\t,(case when vendido_ano_passado.VENDIDO = '0.00' \n" +
+            "\t\t\t\tthen cast(round((sum(VALORLIQUIDO) * 100) / 100, 2) as decimal(10,2))\n" +
+            "\t\t\t\telse cast(round((sum(VALORLIQUIDO) * 100) / sum(vendido_ano_passado.VENDIDO), 2) as decimal(10,2))\n" +
+            "\t\t\t end) as [Desempenho%]\n" +
+            "\tFROM TB_VENDAS \n" +
+            "\t, (SELECT SUM(VALORLIQUIDO) AS VENDIDO\n" +
+            "\t\t\t,VENDEDOR\n" +
+            "\t\t\t,PRODUTO\n" +
+            "\t\t\tFROM TB_VENDAS as tb_vendas_ano_passado\n" +
+            "\t\t\tWHERE 1=1\n" +
+            "\t\t\tand ANO = year(GETDATE()) - 1\n" +
+            "\t\t\tand MES = month(GETDATE()) -2\n" +
+            "\t\t\tGROUP BY VENDEDOR, PRODUTO\n" +
+            "\t\t) as vendido_ano_passado\n" +
+            "\tWHERE 1=1\n" +
+            "\tand ANO = year(GETDATE())\n" +
+            "\tand MES = month(GETDATE()) -2\n" +
+            "\tand vendido_ano_passado.VENDEDOR = TB_VENDAS.VENDEDOR\n" +
+            "\tand vendido_ano_passado.PRODUTO = TB_VENDAS.PRODUTO\n" +
+            "\tGROUP BY TB_VENDAS.VENDEDOR, TB_VENDAS.PRODUTO, ANO, MES, vendido_ano_passado.VENDIDO\n" +
+            "\torder by TB_VENDAS.VENDEDOR, TB_VENDAS.PRODUTO",nativeQuery = true)
+    Page<IItent10> itent10(Pageable pageable);
+
 }

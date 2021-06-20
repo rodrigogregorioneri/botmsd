@@ -1,12 +1,22 @@
 package neri.rodrigo.botmsd.business;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import neri.rodrigo.botmsd.model.estoque.estoqueinfo.EstoqueInfoResponse;
+import neri.rodrigo.botmsd.model.estoque.estoqueinfo.IEstoqueInfo;
 import neri.rodrigo.botmsd.model.request.Request;
 import neri.rodrigo.botmsd.model.response.FulfillmentMessage;
 import neri.rodrigo.botmsd.model.response.Response;
 import neri.rodrigo.botmsd.model.response.Text;
 import neri.rodrigo.botmsd.model.vendas.desempenhodevendasdogerenteyparaprodutox.DesempenhoDeVendasDoGerenteYparaProdutoX;
 import neri.rodrigo.botmsd.model.vendas.desempenhodevendasdogerenteyparaprodutox.IDesempenhoDeVendasDoGerenteYparaProdutoX;
+import neri.rodrigo.botmsd.model.vendas.itentcinco.IItent5;
+import neri.rodrigo.botmsd.model.vendas.itentcinco.Itent5;
+import neri.rodrigo.botmsd.model.vendas.itentdez.IItent10;
+import neri.rodrigo.botmsd.model.vendas.itentdez.Itent10;
+import neri.rodrigo.botmsd.model.vendas.itentnove.IItent9;
+import neri.rodrigo.botmsd.model.vendas.itentnove.Itent9;
+import neri.rodrigo.botmsd.model.vendas.itentseis.IItent6;
+import neri.rodrigo.botmsd.model.vendas.itentseis.Itent6;
 import neri.rodrigo.botmsd.model.vendas.quantidadedevendastotaiparacadacliente.IQuantidadeDeVendasTotalParaCadaCliente;
 import neri.rodrigo.botmsd.model.vendas.quantidadedevendastotaiparacadacliente.QuantidadeDeVendasTotalParaCadaCliente;
 import neri.rodrigo.botmsd.model.vendas.realizadodocolaboradorxessemes.IRealizadoDoColaboradorXesseMes;
@@ -41,6 +51,139 @@ public class VendasBusiness {
 
     @Autowired
     private VendasRepository vendasRepository;
+
+
+    public Response getVendas(Request request){
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+        String vendedor = request.getQueryResult().getParameters().getVendedor();
+        String cliente = request.getQueryResult().getParameters().getCliente();
+        for(IItent9 e :  getVendasXCota(vendedor, cliente)){
+            Itent9 estoqueInfoResponse = new Itent9();
+            estoqueInfoResponse.convert(e);
+            textR.add(estoqueInfoResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+    }
+
+    public Page<IItent9> getVendasXCota(String vendedor,  String cliente){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent9> estoque = vendasRepository.itent9(vendedor, cliente, firstPageWithTwoElements);
+        return estoque;
+    }
+
+    public Response getItent5(Request request){
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+
+        String regional = request.getQueryResult().getParameters().getRegional();
+        for(IItent5 e :  getItent5(regional)){
+            Itent5 estoqueInfoResponse = new Itent5();
+            estoqueInfoResponse.convert(e);
+            textR.add(estoqueInfoResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+}
+
+    public Page<IItent5> getItent5(String regional){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent5> estoque = vendasRepository.itent5(regional, firstPageWithTwoElements);
+        return estoque;
+    }
+
+    public Response getItent6(Request request){
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+        String produto = request.getQueryResult().getParameters().getProduto();
+
+        for(IItent6 e :  getitent6(produto)){
+            Itent6 estoqueInfoResponse = new Itent6();
+            estoqueInfoResponse.convert(e);
+            textR.add(estoqueInfoResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+    }
+
+    public Page<IItent6> getitent6(String produto){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent6> estoque = vendasRepository.itent6(produto, firstPageWithTwoElements);
+        return estoque;
+    }
+
+
+
+    public Response getItent9(Request request){
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+        String vendedor = request.getQueryResult().getParameters().getVendedor();
+        String cliente = request.getQueryResult().getParameters().getCliente();
+        for(IItent9 e :  getitent9(vendedor, cliente)){
+            Itent9 estoqueInfoResponse = new Itent9();
+            estoqueInfoResponse.convert(e);
+            textR.add(estoqueInfoResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+    }
+
+    public Page<IItent9> getitent9(String vendedor,  String cliente){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent9> estoque = vendasRepository.itent9(vendedor, cliente, firstPageWithTwoElements);
+        return estoque;
+    }
+
+
+
+    public Response getItent10(JsonNode request){
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Text text = new Text();
+        List<String> textR = new ArrayList<>();
+        for(IItent10 e :  getitent10()){
+            Itent10 estoqueInfoResponse = new Itent10();
+            estoqueInfoResponse.convert(e);
+            textR.add(estoqueInfoResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+    }
+
+    public Page<IItent10> getitent10(){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent10> estoque = vendasRepository.itent10(firstPageWithTwoElements);
+        return estoque;
+    }
+
+
+
+
+
 
     public Response getSomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(Request request){
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
