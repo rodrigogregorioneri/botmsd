@@ -42,11 +42,6 @@ public class VendasBusiness {
     @Autowired
     private VendasRepository vendasRepository;
 
-//    desempenhoDeVendasDoGerenteYparaProdutoX
-//    realizadoFamiliaEsseMes
-//
-
-
     public Response getSomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(Request request){
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
         Response response = new Response();

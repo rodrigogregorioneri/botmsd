@@ -65,15 +65,11 @@ public class EstoqueBusiness {
         return response;
     }
 
-
-
-
     public Page<IEstoqueInfo> getVendasXCota(){
         Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
         Page<IEstoqueInfo> estoque = estoqueRepository.buscaMarca2(firstPageWithTwoElements);
         return estoque;
     }
-
 
     public Response createResponse(List<FulfillmentMessage>fulfillmentMessageList,Response response,FulfillmentMessage fulfillmentMessage,Text text){
         fulfillmentMessage.setText(text);

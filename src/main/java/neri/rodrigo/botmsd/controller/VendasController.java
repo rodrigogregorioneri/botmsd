@@ -56,6 +56,21 @@ public class VendasController {
         return vendasBusiness.getDesempenhoDeVendasDoGerenteYparaProdutoX(request);
     }
 
+    @PostMapping("/realizadodocolaboradorxessemes")
+    public Response getRealizadoDoColaboradorXesseMes(@RequestBody Request request){
+        return vendasBusiness.getRealizadoDoColaboradorXesseMes(request);
+    }
+
+    @PostMapping("/quantidadedevendastotalparacadacliente")
+    public Response getQuantidadeDeVendasTotalParaCadaCliente(@RequestBody Request request){
+        return vendasBusiness.getQuantidadeDeVendasTotalParaCadaCliente(request);
+    }
+
+    @PostMapping("/somadevendasrealizadasparacadaclienteseumamesmaregional")
+    public Response getSomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(@RequestBody Request request){
+        return vendasBusiness.getSomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(request);
+    }
+
 
 
 
