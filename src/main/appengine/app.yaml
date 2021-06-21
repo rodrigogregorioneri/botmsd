@@ -17,4 +17,4 @@ runtime: java11
 # [END gae_java11_helloworld_yaml]
 network:
   forwarded_ports:
-    - 1433/tcp
+    - 2222/tcp

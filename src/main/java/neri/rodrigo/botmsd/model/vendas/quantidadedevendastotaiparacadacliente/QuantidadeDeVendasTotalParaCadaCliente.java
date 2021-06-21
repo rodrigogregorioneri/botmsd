@@ -37,9 +37,8 @@ public class QuantidadeDeVendasTotalParaCadaCliente {
 
     @Override
     public String toString() {
-        return "QuantidadeDeVendasTotalParaCadaCliente{" +
-                "cliente='" + cliente + '\'' +
-                ", vendasRealizadas='" + vendasRealizadas + '\'' +
-                '}';
+        return " " +
+                "cliente: " + cliente + '\'' +
+                ", vendasRealizadas: " + vendasRealizadas + '\'';
     }
 }

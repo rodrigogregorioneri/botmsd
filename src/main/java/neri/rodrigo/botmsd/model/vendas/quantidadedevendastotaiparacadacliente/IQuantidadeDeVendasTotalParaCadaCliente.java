@@ -5,4 +5,5 @@ public interface IQuantidadeDeVendasTotalParaCadaCliente {
     String getCliente();
 
     String getVendasRealizadas();
+
 }

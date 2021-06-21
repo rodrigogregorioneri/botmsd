@@ -37,9 +37,9 @@ public class ListaDezClientesSemVisitasTrintaDias {
 
     @Override
     public String toString() {
-        return "ListaDezClientesSemVisitasTrintaDias{" +
-                "regional='" + cliente + '\'' +
-                ", acao='" + dias + '\'' +
-                '}';
+        return " " +
+                "regional: " + cliente + '\'' +
+                ", acao: " + dias + '\''
+                ;
     }
 }

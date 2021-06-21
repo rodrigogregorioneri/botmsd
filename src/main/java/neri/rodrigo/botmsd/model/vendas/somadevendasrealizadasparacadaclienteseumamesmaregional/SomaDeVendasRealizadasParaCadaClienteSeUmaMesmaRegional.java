@@ -49,10 +49,10 @@ public class SomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional {
 
     @Override
     public String toString() {
-        return "SomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional{" +
-                "regional='" + regional + '\'' +
-                ", mes='" + mes + '\'' +
-                ", vendido='" + vendido + '\'' +
-                '}';
+        return " " +
+                "regional: " + regional + '\'' +
+                ", mes: " + mes + '\'' +
+                ", vendido: " + vendido + '\''
+                ;
     }
 }

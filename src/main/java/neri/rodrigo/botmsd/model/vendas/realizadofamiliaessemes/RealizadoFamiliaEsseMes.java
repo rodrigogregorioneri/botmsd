@@ -73,12 +73,12 @@ public class RealizadoFamiliaEsseMes {
 
     @Override
     public String toString() {
-        return "RealizadoFamiliaEsseMes{" +
-                "familia='" + familia + '\'' +
-                ", ano='" + ano + '\'' +
-                ", mes='" + mes + '\'' +
-                ", realizado='" + realizado + '\'' +
-                ", desempenho='" + desempenho + '\'' +
-                '}';
+        return " " +
+                "familia: " + familia + '\'' +
+                ", ano: " + ano + '\'' +
+                ", mes: " + mes + '\'' +
+                ", realizado: " + realizado + '\'' +
+                ", desempenho: " + desempenho + '\''
+                ;
     }
 }

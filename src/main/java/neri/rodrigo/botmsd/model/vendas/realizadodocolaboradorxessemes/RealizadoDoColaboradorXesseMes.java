@@ -49,10 +49,10 @@ public class RealizadoDoColaboradorXesseMes {
 
     @Override
     public String toString() {
-        return "RealizadoDoColaboradorXesseMes{" +
-                "familia='" + vendedor + '\'' +
-                ", ano='" + realizado + '\'' +
-                ", mes='" + cota + '\'' +
-                '}';
+        return " " +
+                "familia: " + vendedor + '\'' +
+                ", ano: " + realizado + '\'' +
+                ", mes: " + cota + '\''
+                ;
     }
 }

@@ -49,10 +49,10 @@ public class QuantoAregionalXvendeuEsseMes {
 
     @Override
     public String toString() {
-        return "QuantoAregionalXvendeuEsseMes{" +
-                "regional='" + regional + '\'' +
-                ", mes='" + mes + '\'' +
-                ", vendido='" + vendido + '\'' +
-                '}';
+        return " " +
+                "regional: " + regional + '\'' +
+                ", mes: " + mes + '\'' +
+                ", vendido: " + vendido + '\'';
+
     }
 }
