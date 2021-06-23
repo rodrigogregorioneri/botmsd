@@ -12,7 +12,7 @@ public class Parameters {
 
     private String produto;
 
-    @JsonProperty("Regional")
+
     private String regional;
 
     private String vendedor;

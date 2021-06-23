@@ -13,6 +13,8 @@ public class Request {
 
     private String session;
 
+    private String action;
+
     public String getResponseId() {
         return responseId;
     }
@@ -44,5 +46,6 @@ public class Request {
     public void setSession(String session) {
         this.session = session;
     }
+
 
 }

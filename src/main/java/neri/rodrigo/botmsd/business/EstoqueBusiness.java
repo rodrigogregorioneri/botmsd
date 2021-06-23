@@ -30,16 +30,20 @@ public class EstoqueBusiness {
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
         Text text = new Text();
-        String nomeProduto = request.getQueryResult().getParameters().getProduto();
-        List<String> textR = new ArrayList<>();
-        for(ITotalEstoquePorProduto e : getTotalEstoquePorProduto(request.getQueryResult().getParameters().getProdutos())){
-            TotalEstoquePorProduto estoqueInfoResponse = new TotalEstoquePorProduto();
-            estoqueInfoResponse.convert(e);
-            textR.add(estoqueInfoResponse.toString());
-            text.setText(textR);
-        }
-        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
-        response.setFulfillmentMessages(fulfillmentMessageList);
+
+
+
+            String nomeProduto = request.getQueryResult().getParameters().getProdutos();
+            List<String> textR = new ArrayList<>();
+            for(ITotalEstoquePorProduto e : getTotalEstoquePorProduto(request.getQueryResult().getParameters().getProdutos())){
+                TotalEstoquePorProduto estoqueInfoResponse = new TotalEstoquePorProduto();
+                estoqueInfoResponse.convert(e);
+                textR.add(estoqueInfoResponse.toString());
+                text.setText(textR);
+            }
+            createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+            response.setFulfillmentMessages(fulfillmentMessageList);
+
         return response;
     }
 

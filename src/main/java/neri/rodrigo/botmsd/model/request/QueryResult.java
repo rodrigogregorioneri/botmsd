@@ -19,6 +19,8 @@ public class QueryResult {
 
     private Intent intent;
 
+    private String action;
+
     private Integer intentDetectionConfidence;
 
     private String languageCode;
@@ -97,4 +99,11 @@ public class QueryResult {
         this.sentimentAnalysisResult = sentimentAnalysisResult;
     }
 
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 }

@@ -15,6 +15,8 @@ import neri.rodrigo.botmsd.model.vendas.itentdez.IItent10;
 import neri.rodrigo.botmsd.model.vendas.itentdez.Itent10;
 import neri.rodrigo.botmsd.model.vendas.itentnove.IItent9;
 import neri.rodrigo.botmsd.model.vendas.itentnove.Itent9;
+import neri.rodrigo.botmsd.model.vendas.itentquatro.IItent4;
+import neri.rodrigo.botmsd.model.vendas.itentquatro.Itent4;
 import neri.rodrigo.botmsd.model.vendas.itentseis.IItent6;
 import neri.rodrigo.botmsd.model.vendas.itentseis.Itent6;
 import neri.rodrigo.botmsd.model.vendas.quantidadedevendastotaiparacadacliente.IQuantidadeDeVendasTotalParaCadaCliente;
@@ -157,7 +159,7 @@ public class VendasBusiness {
 
 
 
-    public Response getItent10(JsonNode request){
+    public Response getItent10(){
         Response response = new Response();
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
@@ -261,6 +263,44 @@ public class VendasBusiness {
         Page<IRealizadoDoColaboradorXesseMes> vendasXcota =   vendasRepository.realizadoDoColaboradorXesseMes(vendedor,firstPageWithTwoElements);
         return vendasXcota;
     }
+
+
+
+
+
+
+    public Response getIntent4(Request request){
+        List<FulfillmentMessage> fulfillmentMessageList = new ArrayList<FulfillmentMessage>();
+        Response response = new Response();
+        FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
+        Text text = new Text();
+        String produto = request.getQueryResult().getParameters().getProduto();
+        List<String> textR = new ArrayList<>();
+        for(IItent4 e :  intent4(produto)){
+            Itent4 realizadoFamiliaEsseMesResponse = new Itent4();
+            realizadoFamiliaEsseMesResponse.convert(e);
+            textR.add(realizadoFamiliaEsseMesResponse.toString());
+            text.setText(textR);
+        }
+        createResponse(fulfillmentMessageList, response,fulfillmentMessage, text);
+        response.setFulfillmentMessages(fulfillmentMessageList);
+        return response;
+    }
+
+
+    public Page<IItent4>intent4(String produto){
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
+        Page<IItent4> vendasXcota =   vendasRepository.itent4(produto,firstPageWithTwoElements);
+        return vendasXcota;
+    }
+
+
+
+
+
+
+
+
 
 
 

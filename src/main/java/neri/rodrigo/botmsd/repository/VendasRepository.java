@@ -96,7 +96,7 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
             "and CLIENTE = :cliente\n" +
             "and ANO = year(GETDATE())\n" +
             "and MES=month(GETDATE()) -2\n" +
-            "GROUP BY VENDEDOR,Cliente,ANO,MES",nativeQuery = true)
+            "GROUP BY Cliente",nativeQuery = true)
     Page<IQuantidadeDeVendasTotalParaCadaCliente> quantidadeDeVendasTotalParaCadaCliente(@Param("vendedor") String vendedor, @Param("cliente") String cliente, Pageable pageable);
 
 
