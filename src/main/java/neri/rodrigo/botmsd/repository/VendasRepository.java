@@ -70,7 +70,7 @@ public interface VendasRepository extends CrudRepository<Vendas, Integer>, Pagin
             "\t\t,(case when sum(VALORLIQUIDO_COTA) = '0.00' \n" +
             "\t\t\tthen cast(round((sum(VALORLIQUIDO) * 100) / 100, 2) as decimal(10,2))\n" +
             "\t\t\telse cast(round((sum(VALORLIQUIDO) * 100) / sum(VALORLIQUIDO_COTA), 2) as decimal(10,2))\n" +
-            "\t\t end) as [Desempenho%]\n" +
+            "\t\t end) as [Desempenho]\n" +
             "FROM [DB_Hackaton].[dbo].[TB_Vendas]\n" +
             "where 1=1\n" +
             "and VENDEDOR = :vendedor \n" +

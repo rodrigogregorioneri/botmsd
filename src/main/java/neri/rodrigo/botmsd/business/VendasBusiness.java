@@ -336,7 +336,7 @@ public class VendasBusiness {
         FulfillmentMessage fulfillmentMessage = new FulfillmentMessage();
         Text text = new Text();
         String vendedor = request.getQueryResult().getParameters().getVendedor();
-        String produto = request.getQueryResult().getParameters().getProduto();
+        String produto = request.getQueryResult().getParameters().getProdutos();
         List<String> textR = new ArrayList<>();
         for(IDesempenhoDeVendasDoGerenteYparaProdutoX e :  desempenhoDeVendasDoGerenteYparaProdutoX(vendedor,produto)){
             DesempenhoDeVendasDoGerenteYparaProdutoX desempenhoDeVendasDoGerenteYparaProdutoXResponse = new DesempenhoDeVendasDoGerenteYparaProdutoX();
@@ -350,7 +350,7 @@ public class VendasBusiness {
     }
 
 
-    public Page<IDesempenhoDeVendasDoGerenteYparaProdutoX>desempenhoDeVendasDoGerenteYparaProdutoX(@Param("vendedor") String vendedor, @Param("produto") String produto){
+    public Page<IDesempenhoDeVendasDoGerenteYparaProdutoX>desempenhoDeVendasDoGerenteYparaProdutoX(String vendedor,String produto){
         Pageable firstPageWithTwoElements = PageRequest.of(0, 10);
         Page<IDesempenhoDeVendasDoGerenteYparaProdutoX> vendasXcota =   vendasRepository.desempenhoDeVendasDoGerenteYparaProdutoX(vendedor,produto,firstPageWithTwoElements);
         return vendasXcota;

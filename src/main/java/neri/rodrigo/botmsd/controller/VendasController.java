@@ -88,7 +88,7 @@ public class VendasController {
 
     @PostMapping("/itentDez")
     public Response getItent10(@RequestBody JsonNode request) {
-        return vendasBusiness.getItent10(request);
+        return vendasBusiness.getItent10();
     }
 
 }
