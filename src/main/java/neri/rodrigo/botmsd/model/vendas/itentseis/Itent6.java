@@ -87,13 +87,12 @@ public class Itent6 {
 
     @Override
     public String toString() {
-        return "Itent6{" +
-                "produto: " + produto + '\'' +
-                ", ano: " + ano + '\'' +
-                ", mes: " + mes + '\'' +
-                ", meta: " + meta + '\'' +
-                ", realizado: " + realizado + '\'' +
-                ", desempenho: " + desempenho + '\''
-                ;
+        return " " +
+                "produto " + produto  +
+                ", ano " + ano +
+                ", mes " + mes +
+                ", meta " + meta +
+                ", realizado " + realizado +
+                ", desempenho " + desempenho ;
     }
 }

@@ -1,6 +1,7 @@
 package neri.rodrigo.botmsd.business;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import neri.rodrigo.botmsd.model.assistent.*;
 import neri.rodrigo.botmsd.model.estoque.buscatotalestoqueporproduto.ITotalEstoquePorProduto;
 import neri.rodrigo.botmsd.model.estoque.buscatotalestoqueporproduto.TotalEstoquePorProduto;
 import neri.rodrigo.botmsd.model.request.Request;
@@ -82,6 +83,31 @@ public class VisitasBusiness {
         fulfillmentMessage.setText(text);
         fulfillmentMessageList.add(fulfillmentMessage);
         response.setFulfillmentMessages(fulfillmentMessageList);
+        List<ExpectedInput> expectedInputList = new ArrayList<ExpectedInput>();
+        ExpectedInput expectedInput = new ExpectedInput();
+        List<PossibleIntent> possibleIntentsList = new ArrayList<PossibleIntent>();
+        PossibleIntent possibleIntent = new PossibleIntent();
+        possibleIntent.setIntent("actions.intent.TEXT");
+        possibleIntentsList.add(possibleIntent);
+        expectedInput.setPossibleIntents(possibleIntentsList);
+        InputPrompt inputPrompt = new InputPrompt();
+        RichInitialPrompt richInitialPrompt = new RichInitialPrompt();
+
+        SimpleResponse simpleResponse = new SimpleResponse();
+        simpleResponse.setTextToSpeech(text.getText().get(0));
+        Item item = new Item();
+        item.setSimpleResponse(simpleResponse);
+        List<Item> items = new ArrayList<Item>();
+        items.add(item);
+        richInitialPrompt.setItems(items);
+        inputPrompt.setRichInitialPrompt(richInitialPrompt);
+        expectedInput.setInputPrompt(inputPrompt);
+        expectedInputList.add(expectedInput);
+        response.setExpectUserResponse(true);
+        response.setExpectedInputs(expectedInputList);
+
+
+
         return response;
     }
 }

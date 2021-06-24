@@ -1,6 +1,7 @@
 package neri.rodrigo.botmsd.business;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import neri.rodrigo.botmsd.model.assistent.*;
 import neri.rodrigo.botmsd.model.estoque.estoqueinfo.EstoqueInfoResponse;
 import neri.rodrigo.botmsd.model.estoque.estoqueinfo.IEstoqueInfo;
 import neri.rodrigo.botmsd.model.request.Request;
@@ -496,10 +497,40 @@ public class VendasBusiness {
 //
 //    // CRIA OBJETO DE RESPOSTA
 //
-    public Response createResponse(List<FulfillmentMessage>fulfillmentMessageList,Response response,FulfillmentMessage fulfillmentMessage,Text text){
-        fulfillmentMessageList.add(fulfillmentMessage);
-        fulfillmentMessage.setText(text);
-        return response;
+public Response createResponse(List<FulfillmentMessage> fulfillmentMessageList, Response response, FulfillmentMessage fulfillmentMessage, Text text){
+    fulfillmentMessage.setText(text);
+    fulfillmentMessageList.add(fulfillmentMessage);
+    response.setFulfillmentMessages(fulfillmentMessageList);
+    List<ExpectedInput> expectedInputList = new ArrayList<ExpectedInput>();
+    ExpectedInput expectedInput = new ExpectedInput();
+    List<PossibleIntent> possibleIntentsList = new ArrayList<PossibleIntent>();
+    PossibleIntent possibleIntent = new PossibleIntent();
+//    possibleIntent.setIntent("actions.intent.TEXT");
+//    possibleIntentsList.add(possibleIntent);
+    expectedInput.setPossibleIntents(possibleIntentsList);
+    InputPrompt inputPrompt = new InputPrompt();
+    RichInitialPrompt richInitialPrompt = new RichInitialPrompt();
+
+    SimpleResponse simpleResponse = new SimpleResponse();
+    List<String> tex = text.getText();
+    if(tex != null){
+        simpleResponse.setTextToSpeech(tex.get(0));
     }
+
+    Item item = new Item();
+    item.setSimpleResponse(simpleResponse);
+    List<Item> items = new ArrayList<Item>();
+    items.add(item);
+    richInitialPrompt.setItems(items);
+    inputPrompt.setRichInitialPrompt(richInitialPrompt);
+    expectedInput.setInputPrompt(inputPrompt);
+    expectedInputList.add(expectedInput);
+    response.setExpectUserResponse(true);
+    response.setExpectedInputs(expectedInputList);
+
+
+
+    return response;
+}
 
 }

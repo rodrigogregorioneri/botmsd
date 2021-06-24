@@ -1,29 +1,17 @@
 
-package neri.rodrigo.botmsd.model.response;
-
-import neri.rodrigo.botmsd.model.assistent.ExpectedInput;
+package neri.rodrigo.botmsd.model.assistent;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 
-@Generated("jsonschema2pojo")
-public class Response {
+public class ResponseAssistent {
 
-
-    private List<FulfillmentMessage> fulfillmentMessages;
 
     private Boolean expectUserResponse;
 
     private List<ExpectedInput> expectedInputs;
 
-    public List<FulfillmentMessage> getFulfillmentMessages() {
-        return fulfillmentMessages;
-    }
 
-    public void setFulfillmentMessages(List<FulfillmentMessage> fulfillmentMessages) {
-        this.fulfillmentMessages = fulfillmentMessages;
-    }
 
     public Boolean getExpectUserResponse() {
         return expectUserResponse;
@@ -40,4 +28,5 @@ public class Response {
     public void setExpectedInputs(List<ExpectedInput> expectedInputs) {
         this.expectedInputs = expectedInputs;
     }
+
 }

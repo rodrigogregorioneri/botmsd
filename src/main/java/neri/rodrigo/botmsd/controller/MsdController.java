@@ -7,7 +7,10 @@ import neri.rodrigo.botmsd.business.VisitasBusiness;
 import neri.rodrigo.botmsd.model.request.Request;
 import neri.rodrigo.botmsd.model.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -23,6 +26,8 @@ public class MsdController {
     @Autowired
     private VisitasBusiness visitasBusiness;
 
+    @Autowired
+    private RestTemplate restTemplate;
 
     @PostMapping("/intent")
     public Response getName(@RequestBody Request request){
@@ -64,11 +69,32 @@ public class MsdController {
         }else if(request.getQueryResult().getAction().equals("intent12")){
             // intent 12
             return vendasBusiness.getSomaDeVendasRealizadasParaCadaClienteSeUmaMesmaRegional(request);
-        }else{
+        }else if(request.getQueryResult().getAction().equals("noticias")) {
+            // intent 12
+            return getNoticias().getBody();
+        } else{
             return new Response();
         }
 
 
+    }
+
+
+
+
+
+
+
+    public ResponseEntity<Response> getNoticias()
+    {
+        //TODO: Save employee details which will generate the employee id
+
+        final String uri = "http://localhost:3000/noticias";
+        RestTemplate restTemplate = new RestTemplate();
+        Response newEmployee = new Response();
+        //Build URI
+        Response result = restTemplate.postForObject( uri, newEmployee, Response.class);
+        return ResponseEntity.ok(result);
     }
 
 
