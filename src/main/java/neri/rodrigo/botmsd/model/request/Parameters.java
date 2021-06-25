@@ -12,6 +12,7 @@ public class Parameters {
 
     private String produto;
 
+    private String codigo;
 
     private String regional;
 
@@ -19,6 +20,7 @@ public class Parameters {
 
     private String cliente;
 
+    @JsonProperty("nomeFamiliaProduto")
     private String nomeFamiliaProduto;
 
     public String getProdutos() {
@@ -65,5 +67,13 @@ public class Parameters {
 
     public void setProduto(String produto) {
         this.produto = produto;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }

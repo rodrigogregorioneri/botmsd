@@ -73,12 +73,6 @@ public class RealizadoFamiliaEsseMes {
 
     @Override
     public String toString() {
-        return " " +
-                "familia: " + familia + '\'' +
-                ", ano: " + ano + '\'' +
-                ", mes: " + mes + '\'' +
-                ", realizado: " + realizado + '\'' +
-                ", desempenho: " + desempenho + '\''
-                ;
+        return "O Realizado da familia "+ familia + " foi de R$"+ realizado+". \n"+ " Com desempenho de "+ desempenho+"% em relação a meta.";
     }
 }

@@ -1,6 +1,7 @@
 package neri.rodrigo.botmsd.controller;
 
 
+import neri.rodrigo.botmsd.business.AutenticacaoBusiness;
 import neri.rodrigo.botmsd.business.EstoqueBusiness;
 import neri.rodrigo.botmsd.business.VendasBusiness;
 import neri.rodrigo.botmsd.business.VisitasBusiness;
@@ -25,6 +26,9 @@ public class MsdController {
 
     @Autowired
     private VisitasBusiness visitasBusiness;
+
+    @Autowired
+    private AutenticacaoBusiness autenticacaoBusiness;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -72,6 +76,9 @@ public class MsdController {
         }else if(request.getQueryResult().getAction().equals("noticias")) {
             // intent 12
             return getNoticias().getBody();
+        }else if(request.getQueryResult().getAction().equals("validar_relatorio")) {
+            // intent 12
+            return autenticacaoBusiness.autencar(request);
         } else{
             return new Response();
         }

@@ -61,10 +61,6 @@ public class VistasItentDois {
 
     @Override
     public String toString() {
-        return " " +
-                "  regional :" + regional + '\'' +
-                ", açao :" + acao + '\'' +
-                ", Status Visita: " + statusVisita + '\'' +
-                ", Quantidade Visitas: " + qtdVisitas + '\'' ;
+        return "Foram realizadas " + qtdVisitas + " visitas nesta regional este mês." ;
     }
 }

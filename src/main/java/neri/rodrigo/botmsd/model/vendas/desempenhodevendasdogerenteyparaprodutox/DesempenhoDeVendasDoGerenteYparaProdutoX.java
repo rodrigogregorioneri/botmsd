@@ -74,11 +74,6 @@ public class DesempenhoDeVendasDoGerenteYparaProdutoX {
 
     @Override
     public String toString() {
-        return " " +
-                "  vendedor: " + vendedor + '\'' +
-                ", produto: " + produto + '\'' +
-                ", meta: " + meta + '\'' +
-                ", realizado: " + realizado + '\'' +
-                ", desempenho: " + desempenho + '\'';
+        return "O desempenho do(a) vendedor(a) "+vendedor+" foi de "+desempenho+"% para o produto "+produto+". \n" + " Meta: R$"+meta+ " \n Realizado: R$"+realizado;
     }
 }

@@ -49,9 +49,9 @@ public class TotalEstoquePorProduto {
 
     @Override
     public String toString() {
-        return " " +
-                "  Código do Produto:" + codProduto + '\'' +
-                ", Nome Produto: " + nomeProduto + '\'' +
-                ", Soma Estoque: " + somaEstoque + '\'';
+        return "" +
+                "O produto " + nomeProduto +
+                " tem " + somaEstoque +
+                " unidades." ;
     }
 }

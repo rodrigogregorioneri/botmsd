@@ -21,7 +21,7 @@ public interface VisitasRepository extends JpaRepository<Visitas, Integer> {
             "  and REGIONAL like %:regional%\n" +
             "  and ANO = year(GETDATE())\n" +
             "  and MES = month(GETDATE())\n" +
-            "  and STATUS_VISITA <> ' '\n" +
+            "  and STATUS_VISITA = 'ENVIADA'\n" +
             "  group by REGIONAL, ACAO, STATUS_VISITA\n" +
             "  order by REGIONAL", nativeQuery = true)
     Page<IVistasItentDois> intent2(@Param("regional") String regional, Pageable pageable);
